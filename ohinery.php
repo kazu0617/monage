@@ -37,8 +37,8 @@ function ohinery_post_twitterid() {
     return get_option( 'ohinery_twitter_account' );
 }
 
-function ohinery_img_lacation() {
-    return plugins_url( 'ohinery.png', __FILE__ );
+function ohinery_img_lacation( $cointype ) {
+    return plugins_url( 'ohinery_' + $cointype + '.png' , __FILE__ );
 }
 
 add_shortcode('ohinery_twid', 'ohinery_post_twitterid');
@@ -67,12 +67,18 @@ add_filter( 'admin_init', 'ohinery_add_option' );
 function ohinery_addafterpost($ohinery_content) {
  
 $ohinery_bottom = <<< sentence
-<center><a href="https://twitter.com/share?text=@zenyhime%20tip%20@[ohinery_twid]%200.114114%20ZNYを送ります">
-<img src="[ohinery_imgloc]" alt="おひねりを投げる" rel="nofollow" class="ohinery_image">
-</a> <br><a href="http://zenyhime.sigruru.com/" target="_blank">おひねり(ぜにぃ姫)ってなに？</a><br>
+<div class="sharedaddy sd-sharing-enabled"><h3 class="sd-title"><em>暗号通貨を投げる:</em></h3></div>
+<a href="https://twitter.com/share?text=@zenyhime%20tip%20@[ohinery_twid]%200.114114%20ZNYを送ります">
+<img src="[ohinery_imgloc(zeny)]" alt="おひねりをBitZenyで投げる" rel="nofollow" class="ohinery_image"></a>
+<a href="https://twitter.com/share?text=@tipnem%20tip%20@[ohinery_twid]%200.114114%20NEMを送ります">
+<img src="[ohinery_imgloc_nem]" alt="おひねりをNEMで投げる" rel="nofollow" class="ohinery_image"></a>
+<a href="https://twitter.com/share?text=@cointip_jp%20tip%20@[ohinery_twid]%200.114114%20BTCを送ります">
+<img src="[ohinery_imgloc_btc]" alt="おひねりをBTCで投げる" rel="nofollow" class="ohinery_image"></a>
+<br><div class="sharedaddy sd-sharing-enabled"><h3 class="sd-title"><em>それぞれの投げ銭システムについて:</em></h3></div>
+<a href="http://zenyhime.sigruru.com/" target="_blank">BitZeny(ぜにぃ姫)</a><br>
 <a href="http://bitzeny.org/" target="_blank">そもそもBitZenyってなに？</a></center><style>
 .ohinery_image {
-    width: 300px;  /* 横幅を300pxに */
+    max-width: 100px;  /* 横幅を300pxに */
 }
 </style>
 sentence;
