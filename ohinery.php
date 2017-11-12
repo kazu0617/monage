@@ -37,12 +37,12 @@ function ohinery_post_twitterid() {
     return get_option( 'ohinery_twitter_account' );
 }
 
-function ohinery_img_lacation() {
+function ohinery_img_location() {
     return plugins_url( 'ohinery.png', __FILE__ );
 }
 
 add_shortcode('ohinery_twid', 'ohinery_post_twitterid');
-add_shortcode('ohinery_imgloc', 'ohinery_img_lacation');
+add_shortcode('ohinery_imgloc', 'ohinery_img_location');
 //add option for wordpress
     function ohinery_addfield() {
     add_settings_field( 'twitter', 'おひねりを投げる先のTwitterのIDをお願いします。', 'ohinery_twitter_field', 'general', 'default', array( 'label_for' => 'ohinery_twitter_account' ) );
